@@ -155,7 +155,7 @@ def new_transaction():
 
     for field in required_fields:
         if not tx_data.get(field):
-            return "Invlaid transaction data", 404
+            return "Invlaid transaction block data", 404
 
     tx_data["timestamp"] = time.time()
 
@@ -194,7 +194,7 @@ def mine_unconfirmed_transactions():
 def register_new_peers():
     nodes = request.get_json()
     if not nodes:
-        return "Invalid data", 400
+        return "Invalid block data", 400
     for node in nodes:
         peers.add(node)
 
@@ -216,7 +216,7 @@ def validate_and_add_block():
     added = blockchain.add_block(block, proof)
 
     if not added:
-        return "The block was discarded by the node", 400
+        return "The block was descard by the node", 400
 
     return "Block added to the chain", 201
 
